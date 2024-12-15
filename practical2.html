@@ -1,114 +1,173 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лабораторна робота</title>
+    <title>Registration Form</title>
     <style>
-        /* 1. Виділіть перший елемент <li> та надайте йому жирний шрифт */
-        ul li:first-child {
+        /* Загальні стилі для сторінки */
+        body {
+            font-family: "Roboto", sans-serif;
+            background-color: #e8f6ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Контейнер форми */
+        .registration-form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            border: 2px solid #5dade2;
+        }
+
+        /* Анімація для контейнера */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Заголовок */
+        .registration-form h1 {
+            font-size: 28px;
+            color: #1a5276;
+            margin-bottom: 20px;
+        }
+
+        /* Стилі для міток (label) */
+        label {
+            display: block;
+            font-size: 14px;
+            text-align: left;
+            margin-bottom: 6px;
             font-weight: bold;
+            color: #21618c;
         }
 
-        /* 2. Виберіть усі елементи <a>, які є останніми дочірніми елементами свого батька, і пофарбуйте їх у червоний колір */
-        a:last-child {
-            color: red;
+        /* Стилі для обов'язкової зірочки */
+        sup {
+            font-size: 12px;
+            color: #e74c3c;
         }
 
-        /* 3. Виберіть усі елементи input, які вимкнено (disabled), і надайте їм сірий фоновий колір */
-        input:disabled {
-            background-color: gray;
+        /* Стилі для полів вводу */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #b3cde0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #f4f9fd;
         }
 
-        /* 4. Виберіть усі елементи <p>, які є прямими дочірніми елементами елемента <div>, і надайте їм напівжирний шрифт */
-        div > p {
-            font-weight: bold;
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #5dade2;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+            background-color: #e8f6ff;
         }
 
-        /* 5. Виберіть усі елементи, які мають атрибут href, що починається з https, і пофарбуйте їх у зелений колір */
-        a[href^="https"] {
-            color: green;
-        }
-
-        /* 6. Виберіть усі елементи input, які мають атрибут type як text і обведіть їх рамкою 1 піксель суцільним синім кольором */
-        input[type="text"] {
-            border: 1px solid blue;
-        }
-
-        /* 7. Виберіть усі елементи <li>, які є першими або останніми дочірніми елементами батьківського елемента, і встановіть для них розмір шрифту 24 пікселя */
-        ul li:first-child, ul li:last-child {
-            font-size: 24px;
-        }
-
-        /* 8. Виберіть усі елементи <p>, які є нащадками елемента <div> і встановіть для них розмір шрифту 16 пікселів */
-        div p {
+        /* Стилі для кнопки */
+        button {
+            background-color: #5dade2;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
             font-size: 16px;
-        }
-
-        /* 9. Виберіть усі елементи <input> зі значенням checked, і надайте їм фонового кольору світло-блакитний */
-        input:checked {
-            background-color: lightblue;
-        }
-
-        /* 10. Виділіть усі елементи <a>, які є прямими дочірніми елементами <li>, і підкресліть їх текстом */
-        li > a {
-            text-decoration: underline;
-        }
-
-        /* 11. Виділіть усі елементи <li>, які є парними елементами батьківського елемента, і надайте їм жирний шрифт */
-        ul li:nth-child(even) {
             font-weight: bold;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        /* 12. Виберіть усі елементи <input>, які мають атрибут типу text і не disabled, і надайте їм фоновий колір сірого кольору */
-        input[type="text"]:not(:disabled) {
-            background-color: lightgray;
+        button:hover {
+            background-color: #5499c7;
+            transform: translateY(-2px);
         }
 
-        /* 13. Виберіть усі елементи <p>, які є першими дочірніми елементами батьківського елемента, і встановіть для них розмір шрифту 24 пікселя */
-        p:first-child {
-            font-size: 24px;
+        button:active {
+            background-color: #2e86c1;
+            transform: translateY(0);
         }
 
-        /* 14. Виберіть елемент <li>, який йде після елементу з класом .special і зробіть його перечеркнутим */
-        .special + li {
-            text-decoration: line-through;
+        /* Стилі для dropdown (select) */
+        select {
+            appearance: none;
+            background: #f4f9fd url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%235dade2' d='M5 7l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 10px center;
+            background-size: 15px;
         }
 
-        /* 15. Виділіть першу літеру кожного елемента <p> і надайте їй розмір шрифту 36 пікселів */
-        p::first-letter {
-            font-size: 36px;
+        /* Додаткові стилі для секції з dropdown і кнопкою */
+        .downPart {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        /* 16. Додайте ::after для кожного елемента <a> та надайте йому вміст ↗ */
-        a::after {
-            content: "↗";
+        @media (max-width: 480px) {
+            .registration-form {
+                padding: 20px;
+            }
+
+            button {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-    <ul>
-        <li>Перший елемент</li>
-        <li class="special">Елемент зі спеціальним класом</li>
-        <li>Елемент після special</li>
-        <li>Ще один елемент</li>
-    </ul>
+    <div class="registration-form">
+        <h1>Registration Form</h1>
+        <form action="https://webhook.site">
 
-    <div>
-        <p>Прямий нащадок div</p>
-        <p>Інший нащадок div</p>
-        <div>
-            <p>Нащадок іншого div</p>
-        </div>
+            <label for="inputName">User Name <sup>*</sup></label>
+            <input type="text" name="inputName" id="inputName" required>
+
+            <label for="inputSurname">User Surname <sup>*</sup></label>
+            <input type="text" name="inputSurame" id="inputSurname" required>
+
+            <label for="inputEmail">Email <sup>*</sup></label>
+            <input type="email" name="inputEmail" id="inputEmail" required>
+
+            <label for="pwd">Password <sup>*</sup></label>
+            <input type="password" name="pwd" id="inputPwd" required>
+
+            <label for="rpwd">Repeat Password <sup>*</sup></label>
+            <input type="password" name="rpwd" id="rpwd" required>
+
+            <div class="downPart">
+                <select name="gender" id="genderSelect">
+                    <option value="underfind">Underfind</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+    
+                <button type="submit"><b>Send</b></button>
+            </div>
+        </form>
     </div>
-
-    <a href="https://example.com">Зелений лінк</a>
-    <a href="http://example.com">Червоний лінк</a>
-
-    <input type="text" value="Text field" />
-    <input type="text" value="Disabled field" disabled />
-    <input type="checkbox" checked />
-    <input type="text" />
-
 </body>
 </html>
