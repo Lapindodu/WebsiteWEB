@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Planner</title>
+  <!-- Підключення шрифту Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles4.css">
+</head>
+<body>
+  <div class="planner">
+    <header>
+      <h1>WEEKLY PLAN</h1>
+      <div class="header-inputs">
+        <span>Week of <input type="text" placeholder="Enter date"></span>
+        <span>Healthy Habit <input type="text" placeholder="Enter habit"></span>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> Rocked It</label>
+          <label><input type="checkbox"> Room for Improvement</label>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!-- Секція TO DO -->
+      <section class="to-do">
+        <h2>TO DO</h2>
+        <div class="goals">
+          <h3>Top 3 Goals</h3>
+          <ul>
+            <li><input type="checkbox"> <input type="text" placeholder="Goal 1"></li>
+            <li><input type="checkbox"> <input type="text" placeholder="Goal 2"></li>
+            <li><input type="checkbox"> <input type="text" placeholder="Goal 3"></li>
+          </ul>
+        </div>
+        <div class="tasks">
+          <h3>Everything Else</h3>
+          <ul>
+            <li><input type="checkbox"> <input type="text" placeholder="Task 1"></li>
+            <li><input type="checkbox"> <input type="text" placeholder="Task 2"></li>
+            <li><input type="checkbox"> <input type="text" placeholder="Task 3"></li>
+            <li><input type="checkbox"> <input type="text" placeholder="Task 4"></li>
+            <li><input type="checkbox"> <input type="text" placeholder="Task 5"></li>
+          </ul>
+        </div>
+        <div class="next-week">
+          <h3>Next Week</h3>
+          <ul>
+            <li><input type="checkbox"> <input type="text" placeholder="Task for next week"></li>
+            <li><input type="checkbox"> <input type="text" placeholder="Task for next week"></li>
+            <li><input type="checkbox"> <input type="text" placeholder="Task for next week"></li>
+            <li><input type="checkbox"> <input type="text" placeholder="Task for next week"></li>
+          </ul>
+        </div>
+      </section>
+      <!-- Дні тижня -->
+      <section class="days">
+        <div class="day">
+            <h3>Monday <input type="checkbox" class="day-checkbox"></h3>
+            <textarea placeholder="Write.."></textarea>
+          </div>
+          <div class="day">
+            <h3>Tuesday <input type="checkbox" class="day-checkbox"></h3>
+            <textarea placeholder="Write.."></textarea>
+          </div>
+          <div class="day">
+            <h3>Wednesday <input type="checkbox" class="day-checkbox"></h3>
+            <textarea placeholder="Write.."></textarea>
+          </div>
+          <div class="day">
+            <h3>Thursday <input type="checkbox" class="day-checkbox"></h3>
+            <textarea placeholder="Write.."></textarea>
+          </div>
+          <div class="day">
+            <h3>Friday <input type="checkbox" class="day-checkbox"></h3>
+            <textarea placeholder="Write.."></textarea>
+          </div>
+          <div class="day">
+            <h3>Saturday <input type="checkbox" class="day-checkbox"></h3>
+            <textarea placeholder="Write.."></textarea>
+          </div>
+          <div class="day">
+            <h3>Sunday <input type="checkbox" class="day-checkbox"></h3>
+            <textarea placeholder="Write.."></textarea>
+          </div>
+      </section>
+    </main>
+  </div>
+  <script src="script4.js"></script>
+</body>
+</html>

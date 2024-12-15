@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokéball Explosion Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: url('https://swordshield.pokemon.com/assets/img/screenshots/10_7_livecamera_4.jpg') no-repeat center center fixed;
+            background-size: cover; /* Ensure the background covers the whole screen */
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .poke-ball {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: url('https://img.pokemondb.net/sprites/items/poke-ball.png') no-repeat center/contain;
+            animation: throw 1s ease-out forwards;
+        }
+
+        .pokemon {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            opacity: 0;
+            animation: appear 0.5s ease-in-out forwards, shake 1s infinite alternate ease-in-out, jump 2s infinite ease-in-out;
+        }
+
+        @keyframes throw {
+            0% {
+                transform: translateY(-50vh) translateX(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(0) translateX(-20vw) rotate(360deg);
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes appear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(3px, -3px);
+            }
+        }
+
+        @keyframes jump {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .explosion {
+            position: absolute;
+            width: 128px;
+            height: 128px;
+            background: radial-gradient(circle, #ffcc00 0%, transparent 70%);
+            opacity: 0;
+            animation: explode 0.5s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="animation-container"></div>
+
+    <script>
+        const container = document.getElementById('animation-container');
+
+        const pokemonSprites = [
+            'https://img.pokemondb.net/sprites/black-white/normal/pikachu.png',
+            'https://img.pokemondb.net/sprites/black-white/normal/charmander.png',
+            'https://img.pokemondb.net/sprites/black-white/normal/bulbasaur.png',
+            'https://img.pokemondb.net/sprites/black-white/normal/squirtle.png',
+            'https://img.pokemondb.net/sprites/black-white/normal/jigglypuff.png',
+            'https://img.pokemondb.net/sprites/black-white/normal/meowth.png',
+            'https://img.pokemondb.net/sprites/black-white/normal/psyduck.png',
+            'https://img.pokemondb.net/sprites/black-white/normal/snorlax.png',
+            'https://img.pokemondb.net/sprites/black-white/normal/magikarp.png',
+            'https://img.pokemondb.net/sprites/black-white/normal/eevee.png'
+        ];
+
+        pokemonSprites.forEach((sprite, index) => {
+            const delay = index * 1.5;
+
+            // Create Pokéball
+            const ball = document.createElement('div');
+            ball.classList.add('poke-ball');
+            ball.style.animationDelay = `${delay}s`;
+            ball.style.top = '50%';
+            ball.style.left = `${10 + index * 8}%`;
+            container.appendChild(ball);
+
+            // Create Explosion
+            const explosion = document.createElement('div');
+            explosion.classList.add('explosion');
+            explosion.style.animationDelay = `${delay + 1}s`;
+            explosion.style.top = '50%';
+            explosion.style.left = `${10 + index * 8}%`;
+            container.appendChild(explosion);
+
+            // Create Pokémon
+            const pokemon = document.createElement('img');
+            pokemon.classList.add('pokemon');
+            pokemon.src = sprite;
+            pokemon.style.animationDelay = `${delay + 1.5}s`;
+            pokemon.style.top = '50%';
+            pokemon.style.left = `${10 + index * 8}%`;
+            container.appendChild(pokemon);
+        });
+    </script>
+</body>
+</html>
